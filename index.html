@@ -50,7 +50,7 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: rgba(0, 0, 0, 0.35);
+      background: rgba(0, 0, 0, 0.50);
     }
 
     /* Countdown stílus */
@@ -62,7 +62,7 @@
 
     #countdown {
       font-family: 'Aubrey', serif;
-      font-size: 6rem;
+      font-size: 12rem;
       letter-spacing: 0.06em;
     }
 
@@ -114,14 +114,16 @@
   // Háttér slideshow – random kezdőkép
   const slides = document.querySelectorAll('#bg-slideshow .slide');
   slides.forEach(s => s.classList.remove('active'));
-  let current = Math.floor(Math.random() * slides.length);
+  let current = 0;
   slides[current].classList.add('active');
 
   setInterval(() => {
     slides[current].classList.remove('active');
-    current = (current + 1) % slides.length;
+    let next;
+    do { next = Math.floor(Math.random() * slides.length); } while (next === current);
+    current = next;
     slides[current].classList.add('active');
-  }, 6000);
+  }, 3000);
 </script>
 
 </body>
