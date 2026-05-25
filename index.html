@@ -119,13 +119,10 @@
 
   setInterval(() => {
     slides[current].classList.remove('active');
-    let next;
-    do { next = Math.floor(Math.random() * slides.length); } while (next === current);
-    current = next;
+    current = (current + 1) % slides.length;
     slides[current].classList.add('active');
   }, 3000);
 </script>
 
 </body>
 </html>
-``
